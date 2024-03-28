@@ -27,7 +27,7 @@ sessionStorage = {}
 # Функция получает тело запроса и возвращает ответ.
 # Внутри функции доступен request.json - это JSON, который отправила нам Алиса в запросе POST
 def main():
-    logging.info('Request: %r', request.json)
+    logging.info('Request: ' + request.json)
 
     # Начинаем формировать ответ, согласно документации
     # мы собираем словарь, который потом при помощи библиотеки json преобразуем в JSON и отдадим Алисе
@@ -43,7 +43,7 @@ def main():
     # непосредственно за ведение диалога
     handle_dialog(request.json, response)
 
-    logging.info('Response: %r', request.json)
+    logging.info('Response:' + request.json)
 
     # Преобразовываем в JSON и возвращаем
     return json.dumps(response)
@@ -79,9 +79,9 @@ def handle_dialog(req, res):
         'ладно',
         'куплю',
         'покупаю',
-        'хорошо',
-        'Я покупаю',
-        'Я куплю'
+        'хорошо'
+        'я покупаю',
+        'я куплю'
     ]:
         # Пользователь согласился, прощаемся.
         res['response']['text'] = 'Слона можно найти на Яндекс.Маркете!'
